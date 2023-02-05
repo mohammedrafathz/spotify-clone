@@ -1,7 +1,7 @@
-import { Box, Divider, LinkBox, LinkOverlay, List, ListIcon, ListItem } from '@chakra-ui/layout';
+import { Box, Divider, Link, LinkBox, LinkOverlay, List, ListIcon, ListItem } from '@chakra-ui/layout';
 import { MenuItem } from '@chakra-ui/menu';
 import Image from 'next/image';
-import Link from 'next/link';
+import NextLink from 'next/link';
 import { MdFavorite, MdHome, MdLibraryMusic, MdPlaylistAdd, MdSearch } from 'react-icons/md'
 
 const navMenu = [
@@ -49,12 +49,10 @@ const Sidebar = () => {
             {navMenu.map(menu => (
               <ListItem key={menu.name} paddingX="20px" fontSize="16px">
                 <LinkBox>
-                  <Link href={menu.route} passHref>
-                    <LinkOverlay>
-                      <ListIcon as={menu.icon} color='white' marginRight="20px" />
-                      {menu.name}
-                    </LinkOverlay>
-                  </Link>
+                  <LinkOverlay as={NextLink} href={menu.route} passHref>
+                    <ListIcon as={menu.icon} color='white' marginRight="20px" />
+                    {menu.name}
+                  </LinkOverlay>
                 </LinkBox>
               </ListItem>
             ))}
@@ -65,12 +63,10 @@ const Sidebar = () => {
             {musicMenu.map(item => (
               <ListItem key={item.name} paddingX="20px" fontSize="16px">
                 <LinkBox>
-                  <Link href={item.route} passHref>
-                    <LinkOverlay>
-                      <ListIcon as={item.icon} color='white' marginRight="20px" />
-                      {item.name}
-                    </LinkOverlay>
-                  </Link>
+                  <LinkOverlay as={NextLink} href={item.route} passHref>
+                    <ListIcon as={item.icon} color='white' marginRight="20px" />
+                    {item.name}
+                  </LinkOverlay>
                 </LinkBox>
               </ListItem>
             ))}
@@ -81,10 +77,8 @@ const Sidebar = () => {
           <List spacing={2}>
             {playlist.map(playlist => (
               <ListItem key={playlist} paddingX="20px">
-                <LinkBox>
-                  <Link href={playlist} passHref>
-                    <LinkOverlay>{playlist}</LinkOverlay>
-                  </Link>
+                <LinkBox >
+                  <LinkOverlay as={NextLink} href={playlist} passHref>{playlist}</LinkOverlay>
                 </LinkBox>
               </ListItem>
             ))}
